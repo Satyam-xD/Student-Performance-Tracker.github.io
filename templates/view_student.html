@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Details for {{ student.name }}</h1>
+        <p>Roll Number: {{ student.roll_number }}</p>
+        <div class="grades">
+            <h3>Grades:</h3>
+            <ul>
+                {% for subject, grade in student.grades.items() %}
+                    <li>{{ subject }}: {{ grade }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="button-container">
+            <a href="/add_grade/{{ student.roll_number }}">Add Grade</a><br>
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
